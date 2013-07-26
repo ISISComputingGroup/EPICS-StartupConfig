@@ -1,0 +1,1 @@
+If your directories are not in C:\EPICS then you will need to alter XMLParse.cpp before compiling, otherwise the application will fail.

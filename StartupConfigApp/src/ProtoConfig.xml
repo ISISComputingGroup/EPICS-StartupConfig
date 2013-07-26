@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<config>
+  <cfgname>Prototype</cfgname>
+  <IOCs>
+    <ioc>
+      <iocname>SimpleIOC</iocname>
+      <apppath>C:\EPICS\ISIS\SimpleIoc\bin\windows-x64\simple.exe</apppath>
+      <stpath>C:\EPICS\ISIS\SimpleIoc\iocBoot\iocsimple</stpath>
+      <port>20000</port>
+      <logfile>log.txt</logfile>
+    </ioc>
+  </IOCs>
+</config>
