@@ -21,22 +21,17 @@ iocerror_start = "It isn't possible to start that IOC."
 iocerror_stop = "It isn't possible to stop that IOC."
 
 def get_ioclist(file):
-	try:
-		tree = ET.parse(file)
-		root = tree.getroot()
-		for a in root:
-			if a.tag == "iocname":
-				ioclist.append(a.text)
-			for b in a:
-				if b.tag == "iocname":
-					ioclist.append(b.text)
-				for c in b:
-					if c.tag == "iocname":
-						ioclist.append(c.text)
-		return 0
-	except IOError:
-		selection = raw_input("Press any key to continue...")
-        pass
+	tree = ET.parse(file)
+	root = tree.getroot()
+	for a in root:
+		if a.tag == "iocname":
+			ioclist.append(a.text)
+		for b in a:
+			if b.tag == "iocname":
+				ioclist.append(b.text)
+			for c in b:
+				if c.tag == "iocname":
+					ioclist.append(c.text)
 
 def display_status():
 	print current
@@ -91,7 +86,7 @@ while True:
 	selection = raw_input(prompt)
 	if selection == "q":
 		print farewell
-		break
+		exit(0)
 	elif selection == "v":
 		update_status()
 		display_status()
