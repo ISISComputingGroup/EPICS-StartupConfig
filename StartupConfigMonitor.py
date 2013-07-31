@@ -54,28 +54,29 @@ def update_status():
 		else:
 			iocunk.append(a)
 
-def stop_ioc():
-	print stop
-	selection = raw_input(prompt)
+def stop_ioc(ioc):
 	update_status()
-	if selection in iocrun:
-		p = prefix + selection + ":STOP"
+	if ioc in iocrun:
+		p = prefix + ioc + ":STOP"
 		v = PV(p)
 		v.value = 1
 	else:
 		print iocerror_stop
 		
 		
-def start_ioc():
-	print start
-	selection = raw_input(prompt)
+def start_ioc(ioc):
 	update_status()
-	if selection in iocidle:
-		p = prefix + selection + ":START"
+	if ioc in iocidle:
+		p = prefix + ioc + ":START"
 		v = PV(p)
 		v.value = 1
 	else:
 		print iocerror_start
+
+def get_input(message):
+	print message
+	selection = raw_input(prompt)
+	return selection
 
 print welcome			
 get_ioclist("C:/EPICS/ISIS/StartupConfig/StartupConfigApp/src/ProtoConfig.xml")
@@ -91,8 +92,12 @@ while True:
 		update_status()
 		display_status()
 	elif selection == "r":
-		start_ioc()
+		print start
+		selection = raw_input(prompt)
+		start_ioc(selection)
 	elif selection == "s":
-		stop_ioc()
+		print stop
+		selection = raw_input(prompt)
+		stop_ioc(selection)
 	else:
 		print unrecognised
