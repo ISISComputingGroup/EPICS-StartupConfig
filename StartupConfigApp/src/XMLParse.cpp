@@ -58,9 +58,9 @@ void cfg_parse()
 	for (size_t i=0; i < iocs.size(); i++)
 	{
 		currioc = iocs[i];
-		
 		//create the command to run the IOC via procserv
 		ostringstream ioccmd;
+		ioccmd << "";
 		ioccmd << "cd " << currioc.st << " && C:\\EPICS\\support\\procserver\\procServ.exe -e " << currioc.app << " --allow --noautorestart -n " << currioc.name << " -L " << currioc.logfile 
 			<< " " << currioc.port << " ./st.cmd && exit";
 		
